@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f7f4">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Habits">
+  <title>Habits</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow" id="today-date"></p>
+        <h1>Today</h1>
+      </div>
+      <button class="icon-button" id="open-add" aria-label="Add a habit">＋</button>
+    </header>
+
+    <section class="progress-card" aria-label="Today's progress">
+      <div class="progress-copy">
+        <div>
+          <p class="section-label">DAILY PROGRESS</p>
+          <p class="progress-number"><span id="done-count">0</span><span class="muted"> / <span id="total-count">0</span> completed</span></p>
+        </div>
+        <strong id="progress-percent">0%</strong>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    </section>
+
+    <nav class="filters" id="filters" aria-label="Filter habits">
+      <button class="filter active" data-filter="All">All</button>
+      <button class="filter" data-filter="Health">Health</button>
+      <button class="filter" data-filter="Learning">Learning</button>
+      <button class="filter" data-filter="Personal">Personal</button>
+      <button class="filter" data-filter="Work">Work</button>
+    </nav>
+
+    <section class="habit-section">
+      <div class="section-heading">
+        <h2>Your habits</h2>
+        <span id="remaining-label"></span>
+      </div>
+      <div id="habit-list" class="habit-list"></div>
+      <div id="empty-state" class="empty-state" hidden>
+        <div class="empty-mark">✓</div>
+        <h3>A fresh start</h3>
+        <p>Add a habit to begin building your routine.</p>
+        <button class="text-button" id="empty-add">Add your first habit</button>
+      </div>
+    </section>
+
+    <section class="week-section">
+      <div class="section-heading">
+        <h2>This week</h2>
+        <span class="subtle">Daily completions</span>
+      </div>
+      <div class="week-grid" id="week-grid"></div>
+    </section>
+
+    <footer>Small steps. Every day.</footer>
+  </main>
+
+  <dialog id="habit-dialog">
+    <form method="dialog" id="habit-form">
+      <div class="dialog-head">
+        <div>
+          <p class="section-label">NEW ROUTINE</p>
+          <h2>Add a habit</h2>
+        </div>
+        <button type="button" class="close-button" id="close-dialog" aria-label="Close">×</button>
+      </div>
+      <label for="habit-name">Habit name</label>
+      <input id="habit-name" maxlength="60" placeholder="e.g. Read 10 pages" required>
+      <label for="habit-category">Category</label>
+      <select id="habit-category">
+        <option>Personal</option><option>Health</option><option>Learning</option><option>Work</option>
+      </select>
+      <button class="primary-button" type="submit">Add habit</button>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
